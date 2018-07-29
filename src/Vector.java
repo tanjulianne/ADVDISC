@@ -39,7 +39,7 @@ public class Vector {
         }
     }
 
-    public static Vector gauss_jordan(List<Vector> vectors, int dimension) {
+    public static Vector gauss_jordan(List<Vector> vectors, int dimension, Vector constants) {
         Vector v = null;
 
         // change list to matrix
@@ -57,7 +57,7 @@ public class Vector {
     public static int span(List<Vector> vectors, int dimension) {
         int span = 0;
 
-        gauss_jordan(vectors, dimension);
+        gauss_jordan(vectors, dimension, new Vector(dimension));
 
         // change list to matrix
         // zerorows = count full 0 rows
