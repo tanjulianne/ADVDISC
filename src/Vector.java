@@ -59,17 +59,30 @@ public class Vector {
 
         gauss_jordan(vectors, dimension, new Vector(dimension));
 
-        // change list to matrix
-        // zerorows = count full 0 rows
-        // span = dimension - zerorows
-
+        boolean flag = false;
+        for (int i = 0; i < dimension; i++) {
+            for (Vector v: vectors) {
+                if (v.getIndex(i) != 0) {
+                    flag = true;
+                }
+            }
+            if (flag) {
+                span++;
+            }
+            flag = false;
+        }
         return span;
     }
 
+    // for bug fixing only. remove after confirmed bug-free
     public void print() {
         for (Double d: values) {
             System.out.println(d);
         }
+    }
+
+    public double getIndex(int index) {
+        return values.get(index);
     }
 
     public int getDimension() {
