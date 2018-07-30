@@ -40,9 +40,17 @@ public class Vector {
     }
 
     public static Vector gauss_jordan(List<Vector> vectors, int dimension, Vector constants) {
-        Vector v = null;
+        Vector leadingZero = new Vector(dimension);
 
-        // change list to matrix
+        // check if solvable combination
+        for (Vector v: vectors) {
+            if (v.getDimension() != constants.getDimension()) {
+                return null;
+            }
+        }
+
+        // if solvable
+
         // counter = 1
         // a sort matrix
         // b divide each row by first element of each row
@@ -51,7 +59,10 @@ public class Vector {
         // e counter ++
         // repeat
 
-        return v;
+        // check if row echelon-form
+        // if may number na hindi 1 or 0, return null
+        // else
+        return constants;
     }
 
     public static int span(List<Vector> vectors, int dimension) {
@@ -83,6 +94,17 @@ public class Vector {
 
     public double getIndex(int index) {
         return values.get(index);
+    }
+
+    public void setIndex(int index, double value) {
+        values.set(index, value);
+    }
+
+    public void swapRows(int index1, int index2) {
+        double temp;
+        temp = values.get(index1);
+        values.set(index1, values.get(index2));
+        values.set(index2, temp);
     }
 
     public int getDimension() {
